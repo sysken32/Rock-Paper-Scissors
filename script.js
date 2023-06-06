@@ -1,93 +1,65 @@
-//DOM structure for title flexbox
-const flexboxTitle = document.querySelector('#flexboxTitle');
-const titleHeader = document.createElement('h1');
-titleHeader.classList.add('tileText');
-titleHeader.textContent = 'Rock, Paper, Scissors!';
-//adding style to flexboxTitle and titleHeader containers
-flexboxTitle.setAttribute('style', 'display: flex; justify-content: center; align-items: center;');
-titleHeader.setAttribute('style', 'height: auto');
-//pushing childs
-flexboxTitle.appendChild(titleHeader);
-//concludes title section
-
-const flexboxBody = document.querySelector('#flexboxBody');
-flexboxBody.setAttribute('style', 'display: flex; justify-content: center;');
-
-//possibly leave this and add a src to each 
-for(i=0; i<4; i++){
-    const imagesDiv = document.createElement('img');
-    imagesDiv.classList.add('card');
-    flexboxBody.appendChild(imagesDiv);
-}
-
-//pushing childs
 
 let playerScore = 0,
-    computerScore = 0;
+    computerScore = 0,
+    winningScore = 5; //defined opening scores + the score it takes to win the game.
 
-function getComputerChoice() {
-    const computerChoice = ["Rock", "Paper", "Scissors"];
-    let computerSelection = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-    return computerSelection;
+
+let rockBtn = document.getElementById('rock');
+rockBtn.addEventListener("click", (event) => playerChoice(event));
+let paperBtn = document.getElementById('paper');
+paperBtn.addEventListener("click", (event) => playerChoice(event));
+let scissorsBtn = document.getElementById('scissors');
+scissorsBtn.addEventListener("click", (event) => playerChoice(event)); //adding click events for all player buttons.
+
+let computerChoice = function() { //function for the computer to choose an item from the array
+    const choice = ['rock', 'paper', 'scissors'];
+    let computerClick = choice[Math.floor(Math.random() * choice.length)];
+    console.log("computer choice: " + computerClick); //logging into console to test working status
+    return computerClick;
 }
 
-function getUserChoice() {
-    let userChoice = prompt("Enter Rock, Paper, or Scissors").toLowerCase();
-    let playerSelection = userChoice.charAt(0).toUpperCase(0) + userChoice.substring(1);
-    return playerSelection;
+const compareRound = function(playerClick, computerClick) {
+    if (playerClick === computerClick){
+        console.log("You tied! Play another round.");
+    }
+    else if(
+        (playerClick === "rock" && computerClick === "scissors") ||
+        (playerClick === "paper" && computerClick === "rock") ||
+        (playerClick === "scissors" & computerClick === "paper")
+    ){
+        console.log("You won! Play another round.");
+        playerScore++;
+    }else{
+        console.log("The computer won. Play another round.");
+        computerScore++;
+    }
+    console.log("Player Score: ", playerScore);
+    console.log("Computer Score: ", computerScore);
 }
 
-function playRound(playerSelection, computerSelection) {
-
-    if (playerSelection === computerSelection) {
-        let result = "You tied! play again next round.";
-        return result;
-    } else if (playerSelection == "Rock" && computerSelection == "Paper") {
-        let result = "You lost! Play again next round.";
-        computerScore++;
-        return result;
-    } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
-        let result = "You won! Play again next round.";
-        playerScore++;
-        return result;
-    } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-        let result = "You lost! Play again next round.";
-        computerScore++;
-        return result;
-    } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-        let result = "You won! Play again next round.";
-        playerScore++;
-        return result;
-    } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
-        let result = "You won! Play again next round.";
-        playerScore++;
-        return result;
-    } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
-        let result = "You lost! Play again next round.";
-        computerScore++;
-        return result;
+function playerChoice(event) {
+    if (!event || !event.target) {
+        console.error("Invalid event object or missing target property.");
+        return;
     }
 
+    let playerClick = event.target.id;
+    let computerClick = computerChoice();
+
+    console.log("User Choice: " + playerClick);
+    compareRound(playerClick, computerClick);
+    
+    if (playerScore === winningScore) {
+        console.log("You beat the computer!");
+        resetGame();
+    } else if (computerScore === winningScore) {
+        console.log("The computer won!");
+        resetGame();
+    }
 }
 
-/* function game() {
-    do {
-        const playerSelection = getUserChoice();
-        const computerSelection = getComputerChoice();
-
-        console.log(playRound(playerSelection, computerSelection));
-        if(playerScore === 5)
-        {
-            console.log("You beat the computer!");
-            break;
-        }
-        else if (computerScore === 5)
-        {
-            console.log("The computer won. Try again next time!");
-            break;
-        }
-    } while(playerScore || computerScore <6);
+let resetGame = function(){
+    playerScore = 0;
+    computerScore = 0;
+    console.log("Scores are reset to zero. Play again!");
 }
-
-game();
-*/

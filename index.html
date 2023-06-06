@@ -2,7 +2,6 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
     </style>
     
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,11 +10,27 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div id="flexboxTitle">
+       <div class="flex-container">
+        <div class="title"><h1>RPC</h1></div>
+        <div class="content">
+            <h4 id="playerSelectionText">Player Selection: </h4>
+            <div class="playerSelection">   
+                <button id="rock" value="rock">Rock</button>
+                <button id="paper" value="paper">Paper</button>
+                <button id="scissors" value="scissors">Scissors</button>
+            </div>
+            <h4>Computer Selection: </h4>
+            <div class="computerSelection">
+                <button class="computerSelection">Rock</button>
+                <button class="computerSelection">Paper</button>
+                <button class="computerSelection">Scissors</button>
+            </div>
         </div>
-        <div id="flexboxBody">
+        <div class="winnerDiv">
+            <h1 class="winner" id="winnerText">Result Text</h1>
+            <button class="resetBtn" onclick="resetGame()">Play Again?</button>
         </div>
-        <script src="script.js">    
-        </script>
+       </div>
     </body>
+    <script src="script.js"></script>   
 </html>
