@@ -1,9 +1,26 @@
+.flash-animation {
+    animation: flash .5s;
+  }
+  
+  @keyframes flash {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+   
    .resetBtn{
     display: none;
    }
    html{
-    background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(-20deg, rgb(233, 222, 250) 0%, rgb(251, 252, 219) 100%);
+    
+    font-family: 'JetBrains Mono', sans-serif;
 }
 
 .flex-container{
@@ -13,10 +30,56 @@
     flex-direction: column;
 }
 
+.scoreBoard{
+    margin-top: 25px;
+    border: dashed;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(234, 234, 234);
+    align-items: center;
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0px 1px 5px rgb(77, 77, 77);
+}
+
 .content{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 
+}
+.playerSelection, .computerSelection{
+    display: flex;
+    flex-direction: row;
+}
+
+.computerSelection{
+    opacity: 50%;
+}
+
+img{
+    display: flex;
+    height: 150px;
+    width: auto;
+}
+
+.playerSelection > img:active{
+    opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
+}
+
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    background-color: transparent;
+    border: none;
+}
+
+.highlightComputer{
+    opacity: 100%;
 }

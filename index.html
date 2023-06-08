@@ -1,5 +1,6 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+    @import url("https://dev-cats.github.io/code-snippets/JetBrainsMono.css");
     </style>
     
 <!DOCTYPE html>
@@ -11,23 +12,27 @@
     </head>
     <body>
        <div class="flex-container">
-        <div class="title"><h1>RPC</h1></div>
+        <div class="title"><h1>Rock, Paper, Scissors!</h1></div>
         <div class="content">
             <h4 id="playerSelectionText">Player Selection: </h4>
             <div class="playerSelection">   
-                <button id="rock" value="rock">Rock</button>
-                <button id="paper" value="paper">Paper</button>
-                <button id="scissors" value="scissors">Scissors</button>
+                <button id="rock" value="rock"><img src="/images/rock.png"></button>
+                <button id="paper" value="paper"><img src="/images/paper.png"></button>
+                <button id="scissors" value="scissors"><img src="/images/scissors.png"></button> <!--Player Selection text not updating after adding images FIX-->
             </div>
-            <h4>Computer Selection: </h4>
+            <h4 id="computerSelectionText">Computer Selection: </h4>
             <div class="computerSelection">
-                <button class="computerSelection">Rock</button>
-                <button class="computerSelection">Paper</button>
-                <button class="computerSelection">Scissors</button>
+                <button class="computerSelection" id="cBtnRock"><img src="/images/rock.png"></button>
+                <button class="computerSelection" id="cBtnPaper"><img src="/images/paper.png"></button>
+                <button class="computerSelection" id="cBtnScissors"><img src="/images/scissors.png"></button>
             </div>
         </div>
+        <div class="scoreBoard">
+            <h2 class="scoreBoardPlayer" id="scoreBoardPlayer">Player Score: 0</h2>
+            <h2 class="scoreBoardComputer" id="scoreBoardComputer">Computer Score: 0</h2>
+        </div>
         <div class="winnerDiv">
-            <h1 class="winner" id="winnerText">Result Text</h1>
+            <h1 class="winner" id="winnerText"></h1> 
             <button class="resetBtn" onclick="resetGame()">Play Again?</button>
         </div>
        </div>
