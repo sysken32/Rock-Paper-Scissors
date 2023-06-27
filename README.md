@@ -1,6 +1,6 @@
 # Rock-Paper-Scissors
 <h2>About This Project</h2>
-<p>A demo of this project can be experienced here: Add later</p>
+<p>A demo of this project can be experienced here: https://sysken32.github.io/Rock-Paper-Scissors</p>
 <h3>Here's how to play 👇</h3>
 <ul>
   <li>Select a choice between rock, paper, or scissors first.</li>
